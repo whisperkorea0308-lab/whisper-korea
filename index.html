@@ -562,20 +562,20 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
     
   </div>
   <ul class="nav-links">
-    <li><a href="#" class="active" onclick="showPage('home',this)">Home</a></li>
-    <li><a href="#" onclick="showPage('tours',this)">Available Tours</a></li>
-    <li><a href="#" onclick="showPage('custom',this)">Custom Trips</a></li>
-    <li><a href="#" onclick="showPage('contact',this)">Contact</a></li>
+    <li><a href="javascript:void(0)" class="active" onclick="return showPage('home', this)">Home</a></li>
+    <li><a href="javascript:void(0)" onclick="return showPage('tours', this)">Available Tours</a></li>
+    <li><a href="javascript:void(0)" onclick="return showPage('custom', this)">Custom Trips</a></li>
+    <li><a href="javascript:void(0)" onclick="return showPage('contact', this)">Contact</a></li>
   </ul>
-  <a href="#" class="nav-cta" onclick="showPage('contact',this);return false;">Book Now</a>
+  <a href="javascript:void(0)" class="nav-cta" onclick="return showPage('contact', this)">Book Now</a>
 </nav>
 
 <!-- PAGE SWITCHER -->
 <div class="page-selector">
-  <button class="page-btn active" onclick="showPage('home',this)">Home</button>
-  <button class="page-btn" onclick="showPage('tours',this)">Available Tours</button>
-  <button class="page-btn" onclick="showPage('custom',this)">Custom Trips</button>
-  <button class="page-btn" onclick="showPage('contact',this)">Contact</button>
+  <button class="page-btn active" onclick="return showPage('home', this)">Home</button>
+  <button class="page-btn" onclick="return showPage('tours', this)">Available Tours</button>
+  <button class="page-btn" onclick="return showPage('custom', this)">Custom Trips</button>
+  <button class="page-btn" onclick="return showPage('contact', this)">Contact</button>
 </div>
 
 <!-- ═══════════════════════════════════
@@ -589,8 +589,8 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
       <h1 class="hero-h1">Discover Korea<br/><em>Your Way</em></h1>
       <p class="hero-sub">Small-group, personally guided tours through Seoul's palaces, street food markets, river cruises, and hidden neighbourhoods. No buses. No crowds. Just Korea.</p>
       <div class="hero-btns">
-        <a href="#" class="btn-primary" onclick="showPage('tours',null);return false;">View All Tours</a>
-        <a href="#" class="btn-outline" onclick="showPage('custom',null);return false;">Custom Trips</a>
+        <a href="javascript:void(0)" class="btn-primary" onclick="return showPage('tours', this)">View All Tours</a>
+        <a href="javascript:void(0)" class="btn-outline" onclick="return showPage('custom', this)">Custom Trips</a>
       </div>
     </div>
     <div class="hero-right">
@@ -623,7 +623,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         <p>Gyeongbokgung Palace, Bukchon Hanok Village, Changdeokgung Secret Garden, and Insadong — all in one day.</p>
         <div class="tour-footer">
           <div class="tour-price">65€ <span>/ person</span></div>
-          <div class="tour-arrow">→</div>
+          <div class="tour-arrow" onclick="return showPage('tours', this)" style="cursor:pointer;">→</div>
         </div>
       </div>
       <div class="tour-card">
@@ -632,7 +632,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         <p>N Seoul Tower, Myeongdong street food, Namsan Park, Hangang waterfront, and DDP — Seoul's greatest hits.</p>
         <div class="tour-footer">
           <div class="tour-price">100€ <span>/ person</span></div>
-          <div class="tour-arrow">→</div>
+          <div class="tour-arrow" onclick="return showPage('tours', this)" style="cursor:pointer;">→</div>
         </div>
       </div>
       <div class="tour-card">
@@ -641,7 +641,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         <p>Gwanghwamun, Cheonggye Stream, Yeouido, Hyundai pop-ups, and a 40-min Han River cruise at Banpo Bridge.</p>
         <div class="tour-footer">
           <div class="tour-price">60€ <span>/ person</span></div>
-          <div class="tour-arrow">→</div>
+          <div class="tour-arrow" onclick="return showPage('tours', this)" style="cursor:pointer;">→</div>
         </div>
       </div>
       <div class="tour-card">
@@ -650,7 +650,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         <p>Common Ground, Seongsu-dong, Seoul Forest, and COEX Starfield — the coolest side of Seoul.</p>
         <div class="tour-footer">
           <div class="tour-price">50€ <span>/ person</span></div>
-          <div class="tour-arrow">→</div>
+          <div class="tour-arrow" onclick="return showPage('tours', this)" style="cursor:pointer;">→</div>
         </div>
       </div>
       <div class="tour-card">
@@ -659,7 +659,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         <p>Mangwon Market, Hapjeong, Hongdae nightlife, and Moonrae's hidden cafés — Seoul after dark.</p>
         <div class="tour-footer">
           <div class="tour-price">60€ <span>/ person</span></div>
-          <div class="tour-arrow">→</div>
+          <div class="tour-arrow" onclick="return showPage('tours', this)" style="cursor:pointer;">→</div>
         </div>
       </div>
       <div class="tour-card">
@@ -668,7 +668,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         <p>UNESCO Hwaseong Fortress, Cafe Street, the famous Suwon beef district, and Starfield COEX — just one day outside Seoul.</p>
         <div class="tour-footer">
           <div class="tour-price">60€ <span>/ person</span></div>
-          <div class="tour-arrow">→</div>
+          <div class="tour-arrow" onclick="return showPage('tours', this)" style="cursor:pointer;">→</div>
         </div>
       </div>
     </div>
@@ -1298,19 +1298,46 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
 
 <script>
 function showPage(id, el) {
+  // Hide all pages
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
-  document.querySelectorAll('.page-btn,.nav-links a').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.page-btn').forEach(b => {
-    if (b.textContent.toLowerCase().includes(id === 'tours' ? 'tour' : id === 'custom' ? 'custom' : id)) b.classList.add('active');
+  // Show target page
+  var target = document.getElementById('page-' + id);
+  if(target) target.classList.add('active');
+  // Update nav link active states
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.classList.remove('active');
+  });
+  document.querySelectorAll('.page-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  // Set active on matching buttons
+  document.querySelectorAll('.page-btn').forEach(function(b) {
+    var t = b.textContent.toLowerCase();
+    if ((id === 'home' && t.includes('home')) ||
+        (id === 'tours' && t.includes('tour')) ||
+        (id === 'custom' && t.includes('custom')) ||
+        (id === 'contact' && t.includes('contact'))) {
+      b.classList.add('active');
+    }
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    var t = a.textContent.toLowerCase();
+    if ((id === 'home' && t.includes('home')) ||
+        (id === 'tours' && t.includes('tour')) ||
+        (id === 'custom' && t.includes('custom')) ||
+        (id === 'contact' && t.includes('contact'))) {
+      a.classList.add('active');
+    }
   });
   window.scrollTo({top: 0, behavior: 'smooth'});
+  return false;
 }
 function showTab(id, el) {
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('on'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
-  document.getElementById('tab-' + id).classList.add('on');
-  el.classList.add('on');
+  document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('on'); });
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('on'); });
+  var tc = document.getElementById('tab-' + id);
+  if(tc) tc.classList.add('on');
+  if(el) el.classList.add('on');
 }
 </script>
 
