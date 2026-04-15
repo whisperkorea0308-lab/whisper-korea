@@ -1548,6 +1548,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
 
 
 
+
 <script>
 var EXPERIENCE_TOURS = [
   'Korean BBQ Experience (40€/90€)',
@@ -1559,172 +1560,45 @@ var EXPERIENCE_TOURS = [
 function bookTour(tourName) {
   showPage('contact');
   setTimeout(function() {
-    // Set tour dropdown
     var sel = document.getElementById('tourSelect');
     if (sel) {
       for (var i = 0; i < sel.options.length; i++) {
-        if (sel.options[i].value === tourName || 
+        if (sel.options[i].value === tourName ||
             sel.options[i].value.indexOf(tourName.split('(')[0].trim()) > -1) {
           sel.selectedIndex = i;
           break;
         }
       }
+      updateTimeSlots(sel.value);
     }
-    // Set time slot based on tour type
-    var timeSlot = document.getElementById('timeSlot');
-    if (timeSlot) {
-      var isExperience = EXPERIENCE_TOURS.indexOf(tourName) > -1;
-      if (isExperience) {
-        // Experiences: default to Afternoon, show all options
-        for (var i = 0; i < timeSlot.options.length; i++) {
-          if (timeSlot.options[i].value.indexOf('Afternoon') > -1) {
-            timeSlot.selectedIndex = i;
-            break;
-          }
-        }
-      } else {
-        // Full day tours: default to Full Day
-        for (var i = 0; i < timeSlot.options.length; i++) {
-          if (timeSlot.options[i].value === 'Full Day') {
-            timeSlot.selectedIndex = i;
-            break;
-          }
-        }
-      }
-    }
-    // Scroll to form
     var form = document.getElementById('contactForm');
-    if (form) { form.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 200);
   return false;
 }
 
 function showPage(id) {
-  var pages = document.querySelectorAll('.page');
-  for (var i = 0; i < pages.length; i++) { pages[i].classList.remove('active'); }
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
   var target = document.getElementById('page-' + id);
-  if (target) { target.classList.add('active'); }
-  var navLinks = document.querySelectorAll('.nav-links a');
-  for (var i = 0; i < navLinks.length; i++) {
-    navLinks[i].classList.remove('active');
-    var t = navLinks[i].textContent.toLowerCase();
+  if (target) target.classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.classList.remove('active');
+    var t = a.textContent.toLowerCase();
     if ((id==='home'&&t.indexOf('home')>-1)||(id==='tours'&&t.indexOf('tour')>-1)||
-        (id==='custom'&&t.indexOf('custom')>-1)||(id==='contact'&&t.indexOf('contact')>-1)) {
-      navLinks[i].classList.add('active');
-    }
-  }
+        (id==='custom'&&t.indexOf('custom')>-1)||(id==='contact'&&t.indexOf('contact')>-1))
+      a.classList.add('active');
+  });
   window.scrollTo(0, 0);
   return false;
 }
 
 function showTab(id, el) {
-  document.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('on');});
-  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
+  document.querySelectorAll('.tab-content').forEach(function(t){ t.classList.remove('on'); });
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('on'); });
   var tc = document.getElementById('tab-' + id);
   if (tc) tc.classList.add('on');
   if (el) el.classList.add('on');
   return false;
-}
-
-// Contact Form Submit
-var contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var btn = this.querySelector('button[type=submit]');
-    var self = this;
-    // Read form values FIRST
-    var tourSelected = self.querySelector('[name="tour_selected"]') ? self.querySelector('[name="tour_selected"]').value : 'Not specified';
-    var timeSlot = self.querySelector('[name="time_slot"]') ? self.querySelector('[name="time_slot"]').value : 'Not specified';
-    var clientName = self.querySelector('[name="name"]') ? self.querySelector('[name="name"]').value : 'Guest';
-    var clientEmail = self.querySelector('[name="email"]') ? self.querySelector('[name="email"]').value : '';
-    var date = self.querySelector('[name="preferred_date"]') ? self.querySelector('[name="preferred_date"]').value : 'Not specified';
-    var groupSize = self.querySelector('[name="group_size"]') ? self.querySelector('[name="group_size"]').value : 'Not specified';
-    var phone = self.querySelector('[name="phone"]') ? self.querySelector('[name="phone"]').value : 'Not provided';
-    var message = self.querySelector('[name="message"]') ? self.querySelector('[name="message"]').value : '';
-    // Update hidden fields BEFORE creating FormData
-    var subjectField = self.querySelector('input[name="_subject"]');
-    if (subjectField) subjectField.value = 'Whisper Korea Booking: ' + tourSelected + ' — ' + clientName;
-    var replyField = self.querySelector('input[name="_replyto"]');
-    if (replyField) replyField.value = clientEmail;
-    var autoField = self.querySelector('input[name="_autoresponse"]');
-    if (autoField) autoField.value = 'Hi ' + clientName + '! Thank you for your booking request with Whisper Korea! Here is a summary of what you requested: Tour: ' + tourSelected + ' | Date: ' + date + ' | Time Slot: ' + timeSlot + ' | Group Size: ' + groupSize + ' | Phone: ' + phone + (message ? ' | Notes: ' + message : '') + '. We will confirm availability within 24 hours. Payment is made on-site after confirmation. For quick replies WhatsApp us at +82 10-2442-4947. Crafted journeys just for you — Whisper Korea Team';
-    // NOW create FormData with updated hidden fields
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    fetch(this.action, { method:'POST', body:new FormData(self), headers:{'Accept':'application/json'} })
-    .then(function(res) {
-      if (res.ok) {
-        contactForm.classList.add('hide');
-        var s = document.getElementById('contactSuccess');
-        if (s) {
-          s.classList.add('show');
-          var p = s.querySelector('p');
-          if (p) { p.style.color='#e0f5ee'; p.innerHTML = 'Thank you <strong style="color:#f0c96a">' + clientName + '</strong>! Your booking request for <strong style="color:#f0c96a">' + tourSelected + '</strong> has been received.<br/><br/>We will confirm within <strong style="color:#f0c96a">24 hours</strong>.<br/>Check your inbox — a confirmation is on its way!';
-        }
-        } showToast('Booking confirmed! Check your email.');
-      } else { btn.textContent='Try Again'; btn.disabled=false; }
-    }).catch(function(){ btn.textContent='Try Again'; btn.disabled=false; });
-  });
-}
-
-// Custom Form Submit
-var customForm = document.getElementById('customForm');
-if (customForm) {
-  customForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var btn = this.querySelector('button[type=submit]');
-    var self = this;
-    var firstName = self.querySelector('[name="first_name"]') ? self.querySelector('[name="first_name"]').value : '';
-    var lastName = self.querySelector('[name="last_name"]') ? self.querySelector('[name="last_name"]').value : '';
-    var clientName = (firstName + ' ' + lastName).trim() || 'Guest';
-    var clientEmail = self.querySelector('[name="email"]') ? self.querySelector('[name="email"]').value : '';
-    var travelDate = self.querySelector('[name="travel_date"]') ? self.querySelector('[name="travel_date"]').value : 'Not specified';
-    var numDays = self.querySelector('[name="num_days"]') ? self.querySelector('[name="num_days"]').value : 'Not specified';
-    var groupSize = self.querySelector('[name="group_size"]') ? self.querySelector('[name="group_size"]').value : 'Not specified';
-    var wishList = self.querySelector('[name="wish_list"]') ? self.querySelector('[name="wish_list"]').value : 'None provided';
-    var budget = self.querySelector('[name="budget"]') ? self.querySelector('[name="budget"]').value : 'Not specified';
-    var seasons = Array.from(self.querySelectorAll('[name="season"]:checked')).map(function(c){return c.value;}).join(', ') || 'Not selected';
-    var vacType = Array.from(self.querySelectorAll('[name="vacation_type"]:checked')).map(function(c){return c.value;}).join(', ') || 'Not selected';
-    var food = Array.from(self.querySelectorAll('[name="food"]:checked')).map(function(c){return c.value;}).join(', ') || 'Not selected';
-    var subjectField = self.querySelector('input[name="_subject"]');
-    if (subjectField) subjectField.value = 'Whisper Korea Custom Itinerary: ' + clientName + ' — ' + numDays + ' days from ' + travelDate;
-    var replyField = self.querySelector('input[name="_replyto"]');
-    if (replyField) replyField.value = clientEmail;
-    var autoField = self.querySelector('input[name="_autoresponse"]');
-    if (autoField) autoField.value = 'Hi ' + clientName + '! Thank you for requesting a Custom Itinerary with Whisper Korea! Here is a summary of what you shared: Travel Date: ' + travelDate + ' | Duration: ' + numDays + ' days | Group Size: ' + groupSize + ' | Budget: ' + budget + ' | Season: ' + seasons + ' | Vacation Type: ' + vacType + ' | Food Preferences: ' + food + ' | Wish List: ' + wishList + '. NEXT STEP — Pay 50 euros via Wise to whisperkorea@naver.com. After payment send your screenshot via WhatsApp +82 10-2442-4947. Your personalised itinerary will be ready within 24 hours. Unlimited refinements included! Crafted journeys just for you — Whisper Korea Team';
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    fetch(self.action, { method:'POST', body:new FormData(self), headers:{'Accept':'application/json'} })
-    .then(function(res) {
-      if (res.ok) {
-        customForm.classList.add('hide');
-        var s = document.getElementById('customSuccess');
-        if (s) {
-          s.classList.add('show');
-          var p = s.querySelector('p');
-          if (p) { p.style.color='#e0f5ee'; p.innerHTML = 'Thank you <strong style="color:#f0c96a">' + clientName + '</strong>! We received your request.<br/><br/><strong style="color:#f0c96a;">Next Step:</strong> Pay <strong style="color:#f0c96a;">50€ via Wise</strong> to <strong>whisperkorea@naver.com</strong><br/>Then WhatsApp your screenshot to <strong style="color:#f0c96a;">+82 10-2442-4947</strong><br/><br/><span style="font-size:12px;color:#a0ddd2;">A confirmation with your details has been sent to your email.</span>';
-        }
-        showToast('Check your email for confirmation!');
-      } else { btn.textContent='Try Again'; btn.disabled=false; }
-    }).catch(function(){ btn.textContent='Try Again'; btn.disabled=false; });
-  });
-
-function showToast(msg) {
-  var t = document.createElement('div');
-  t.className = 'toast';
-  t.innerHTML = '<strong>Whisper Korea</strong>' + msg;
-  document.body.appendChild(t);
-  setTimeout(function(){t.classList.add('show');},100);
-  setTimeout(function(){t.classList.remove('show');setTimeout(function(){t.remove();},400);},5000);
-}
-
-// Update time slot options when tour changes
-var tourSelectEl = document.getElementById('tourSelect');
-if (tourSelectEl) {
-  tourSelectEl.addEventListener('change', function() {
-    updateTimeSlots(this.value);
-  });
 }
 
 function updateTimeSlots(tourValue) {
@@ -1733,14 +1607,178 @@ function updateTimeSlots(tourValue) {
   var isExp = EXPERIENCE_TOURS.indexOf(tourValue) > -1;
   timeSlot.innerHTML = isExp
     ? '<option value="">Select a time</option>' +
-      '<option value="Morning (9AM - 12PM)">Morning (9AM - 12PM)</option>' +
-      '<option value="Afternoon (12PM - 5PM)" selected>Afternoon (12PM - 5PM)</option>' +
-      '<option value="Evening (5PM - 10PM)">Evening (5PM - 10PM)</option>'
+      '<option value="Morning (9AM-12PM)">Morning (9AM - 12PM)</option>' +
+      '<option value="Afternoon (12PM-5PM)" selected>Afternoon (12PM - 5PM)</option>' +
+      '<option value="Evening (5PM-10PM)">Evening (5PM - 10PM)</option>'
     : '<option value="Full Day" selected>Full Day</option>' +
-      '<option value="Morning (9AM - 12PM)">Morning start (9AM)</option>' +
-      '<option value="Afternoon (12PM - 5PM)">Afternoon start (12PM)</option>';
+      '<option value="Morning start (9AM)">Morning start (9AM)</option>' +
+      '<option value="Afternoon start (12PM)">Afternoon start (12PM)</option>';
 }
 
+var tourSelectEl = document.getElementById('tourSelect');
+if (tourSelectEl) {
+  tourSelectEl.addEventListener('change', function() { updateTimeSlots(this.value); });
+}
+
+// ── CONTACT FORM ──
+var contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var f = this;
+    var btn = f.querySelector('button[type=submit]');
+
+    // Collect values
+    var name     = f.querySelector('[name="name"]')           ? f.querySelector('[name="name"]').value           : 'Guest';
+    var email    = f.querySelector('[name="email"]')          ? f.querySelector('[name="email"]').value          : '';
+    var tour     = f.querySelector('[name="tour_selected"]')  ? f.querySelector('[name="tour_selected"]').value  : 'Not specified';
+    var date     = f.querySelector('[name="preferred_date"]') ? f.querySelector('[name="preferred_date"]').value : 'Not specified';
+    var time     = f.querySelector('[name="time_slot"]')      ? f.querySelector('[name="time_slot"]').value      : 'Not specified';
+    var group    = f.querySelector('[name="group_size"]')     ? f.querySelector('[name="group_size"]').value     : 'Not specified';
+    var phone    = f.querySelector('[name="phone"]')          ? f.querySelector('[name="phone"]').value          : 'Not provided';
+    var msg      = f.querySelector('[name="message"]')        ? f.querySelector('[name="message"]').value        : '';
+
+    // Build confirmation message for client
+    var clientMsg = 'Hi ' + name + ', thank you for booking with Whisper Korea! '
+      + 'Here is your booking summary: '
+      + 'Tour: ' + tour + ' | '
+      + 'Date: ' + date + ' | '
+      + 'Time: ' + time + ' | '
+      + 'Group Size: ' + group + '. '
+      + 'We will confirm within 24 hours. Payment is on-site after confirmation. '
+      + 'WhatsApp: +82 10-2442-4947 | whisperkorea@naver.com. '
+      + 'Crafted journeys just for you - Whisper Korea';
+
+    // Update hidden fields BEFORE creating FormData
+    var fld = function(n){ return f.querySelector('input[name="' + n + '"]'); };
+    if (fld('_subject'))      fld('_subject').value      = 'Whisper Korea Booking: ' + tour + ' - ' + name;
+    if (fld('_replyto'))      fld('_replyto').value      = email;
+    if (fld('_autoresponse')) fld('_autoresponse').value = clientMsg;
+
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    // Send to Formspree - this emails WHISPER KOREA with all details
+    fetch(f.action, {
+      method: 'POST',
+      body: new FormData(f),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res) {
+      if (res.ok) {
+        f.classList.add('hide');
+        var s = document.getElementById('contactSuccess');
+        if (s) {
+          s.classList.add('show');
+          var p = s.querySelector('p');
+          if (p) {
+            p.style.color = '#e0f5ee';
+            p.innerHTML = 'Thank you <strong style="color:#f0c96a">' + name + '</strong>!'
+              + ' Your booking for <strong style="color:#f0c96a">' + tour + '</strong> is received.<br/><br/>'
+              + 'We confirm within <strong style="color:#f0c96a">24 hours</strong>.<br/>'
+              + 'A confirmation has been sent to <strong style="color:#f0c96a">' + email + '</strong>';
+          }
+        }
+        showToast('Booking sent! Check your email.');
+      } else {
+        btn.textContent = 'Try Again';
+        btn.disabled = false;
+        showToast('Something went wrong. Please try again.');
+      }
+    }).catch(function() {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    });
+  });
+}
+
+// ── CUSTOM ITINERARY FORM ──
+var customForm = document.getElementById('customForm');
+if (customForm) {
+  customForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var f = this;
+    var btn = f.querySelector('button[type=submit]');
+
+    // Collect values
+    var first    = f.querySelector('[name="first_name"]')  ? f.querySelector('[name="first_name"]').value  : '';
+    var last     = f.querySelector('[name="last_name"]')   ? f.querySelector('[name="last_name"]').value   : '';
+    var name     = (first + ' ' + last).trim() || 'Guest';
+    var email    = f.querySelector('[name="email"]')       ? f.querySelector('[name="email"]').value       : '';
+    var date     = f.querySelector('[name="travel_date"]') ? f.querySelector('[name="travel_date"]').value : 'Not specified';
+    var days     = f.querySelector('[name="num_days"]')    ? f.querySelector('[name="num_days"]').value    : 'Not specified';
+    var group    = f.querySelector('[name="group_size"]')  ? f.querySelector('[name="group_size"]').value  : 'Not specified';
+    var budget   = f.querySelector('[name="budget"]')      ? f.querySelector('[name="budget"]').value      : 'Not specified';
+    var wishes   = f.querySelector('[name="wish_list"]')   ? f.querySelector('[name="wish_list"]').value   : 'None';
+    var seasons  = Array.from(f.querySelectorAll('[name="season"]:checked')).map(function(c){return c.value;}).join(', ') || 'Not selected';
+    var vacType  = Array.from(f.querySelectorAll('[name="vacation_type"]:checked')).map(function(c){return c.value;}).join(', ') || 'Not selected';
+    var food     = Array.from(f.querySelectorAll('[name="food"]:checked')).map(function(c){return c.value;}).join(', ') || 'Not selected';
+
+    // Client confirmation message
+    var clientMsg = 'Hi ' + name + ', thank you for requesting a Custom Itinerary with Whisper Korea! '
+      + 'Here is what you shared: '
+      + 'Travel Date: ' + date + ' | '
+      + 'Duration: ' + days + ' days | '
+      + 'Group Size: ' + group + ' | '
+      + 'Budget: ' + budget + ' | '
+      + 'Season: ' + seasons + ' | '
+      + 'Vacation Type: ' + vacType + ' | '
+      + 'Food: ' + food + ' | '
+      + 'Wish List: ' + wishes + '. '
+      + 'NEXT STEP: Pay 50 euros via Wise to whisperkorea@naver.com. '
+      + 'Then send your payment screenshot via WhatsApp to +82 10-2442-4947. '
+      + 'Your itinerary will be ready within 24 hours. Refinements included! '
+      + 'Crafted journeys just for you - Whisper Korea';
+
+    // Update hidden fields BEFORE FormData
+    var fld = function(n){ return f.querySelector('input[name="' + n + '"]'); };
+    if (fld('_subject'))      fld('_subject').value      = 'Whisper Korea Custom Itinerary: ' + name + ' - ' + days + ' days from ' + date;
+    if (fld('_replyto'))      fld('_replyto').value      = email;
+    if (fld('_autoresponse')) fld('_autoresponse').value = clientMsg;
+
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    fetch(f.action, {
+      method: 'POST',
+      body: new FormData(f),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res) {
+      if (res.ok) {
+        f.classList.add('hide');
+        var s = document.getElementById('customSuccess');
+        if (s) {
+          s.classList.add('show');
+          var p = s.querySelector('p');
+          if (p) {
+            p.style.color = '#e0f5ee';
+            p.innerHTML = 'Thank you <strong style="color:#f0c96a">' + name + '</strong>! We received your request.<br/><br/>'
+              + '<strong style="color:#f0c96a">Next Step:</strong> Pay <strong style="color:#f0c96a">50 euros via Wise</strong><br/>'
+              + 'to <strong style="color:#ffffff">whisperkorea@naver.com</strong><br/><br/>'
+              + 'Then WhatsApp screenshot to <strong style="color:#f0c96a">+82 10-2442-4947</strong><br/><br/>'
+              + '<span style="font-size:12px;color:#a0ddd2;">Confirmation sent to <strong style="color:#f0c96a">' + email + '</strong></span>';
+          }
+        }
+        showToast('Request sent! Check your email.');
+      } else {
+        btn.textContent = 'Try Again';
+        btn.disabled = false;
+        showToast('Something went wrong. Please try again.');
+      }
+    }).catch(function() {
+      btn.textContent = 'Try Again';
+      btn.disabled = false;
+    });
+  });
+}
+
+function showToast(msg) {
+  var t = document.createElement('div');
+  t.className = 'toast';
+  t.innerHTML = '<strong>Whisper Korea</strong>' + msg;
+  document.body.appendChild(t);
+  setTimeout(function(){ t.classList.add('show'); }, 100);
+  setTimeout(function(){ t.classList.remove('show'); setTimeout(function(){ t.remove(); }, 400); }, 5000);
+}
 </script>
 </body>
 </html>
