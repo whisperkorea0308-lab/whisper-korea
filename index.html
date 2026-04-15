@@ -1557,26 +1557,10 @@ if (contactForm) {
     var message = formData.get('message') || '';
     // Set dynamic subject with tour name
     var subjectField = this.querySelector('input[name="_subject"]');
-    if (subjectField) subjectField.value = '🌿 Booking: ' + tourSelected + ' — ' + clientName;
+    if (subjectField) subjectField.value = 'Whisper Korea Booking: ' + tourSelected + ' | ' + clientName;
     // Set rich auto-reply with tour details
     var autoField = this.querySelector('input[name="_autoresponse"]');
-    if (autoField) autoField.value = 'Hi ' + clientName + '! 🌿
-
-Thank you for booking with Whisper Korea!
-
-Your Booking Summary:
-• Tour: ' + tourSelected + '
-• Date: ' + date + '
-• Time: ' + timeSlot + '
-• Group Size: ' + groupSize + '
-
-We will confirm availability within 24 hours.
-Payment is made on-site after confirmation.
-
-For quick replies, WhatsApp us at +82 10-2442-4947
-
-Crafted journeys, just for you
-— Whisper Korea Team';
+    if (autoField) autoField.value = 'Hi ' + clientName + '! Thank you for booking with Whisper Korea! Your Booking Summary: Tour: ' + tourSelected + ' | Date: ' + date + ' | Time: ' + timeSlot + ' | Group Size: ' + groupSize + '. We will confirm availability within 24 hours. Payment is made on-site after confirmation. WhatsApp us at +82 10-2442-4947. Crafted journeys, just for you - Whisper Korea Team';
     btn.textContent = 'Sending...';
     btn.disabled = true;
     fetch(this.action, { method:'POST', body:new FormData(this), headers:{'Accept':'application/json'} })
@@ -1614,26 +1598,7 @@ if (customForm) {
     if (subjectField) subjectField.value = '🗺 Custom Itinerary: ' + clientName + ' — ' + numDays + ' days from ' + travelDate;
     // Rich auto-reply
     var autoField = this.querySelector('input[name="_autoresponse"]');
-    if (autoField) autoField.value = 'Hi ' + clientName + '! 🌿
-
-Thank you for requesting a Custom Itinerary with Whisper Korea!
-
-Your Request Summary:
-• Travel Date: ' + travelDate + '
-• Duration: ' + numDays + ' days
-• Group Size: ' + groupSize + '
-• Wish List: ' + wishList + '
-
-We are crafting your personalised Korea journey and will send a full itinerary within 24 hours.
-
-Custom Itinerary Fee: 50€
-Payment via Wise to: whisperkorea@naver.com
-(Payment only after you approve your itinerary)
-
-For quick replies, WhatsApp us at +82 10-2442-4947
-
-Crafted journeys, just for you
-— Whisper Korea Team';
+    if (autoField) autoField.value = 'Hi ' + clientName + '! Thank you for requesting a Custom Itinerary with Whisper Korea! NEXT STEP: Pay 50 euros via Wise to whisperkorea@naver.com then WhatsApp your payment screenshot to +82 10-2442-4947. Your itinerary will be ready within 24 hours of payment. Refinements included! - Whisper Korea Team';
     btn.textContent = 'Sending...';
     btn.disabled = true;
     fetch(this.action, { method:'POST', body:new FormData(this), headers:{'Accept':'application/json'} })
