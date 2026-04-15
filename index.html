@@ -571,16 +571,33 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
 <style>
 .big-card { cursor: pointer; }
 .big-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(30,61,42,0.15); }
-.book-btn {
-  display:inline-block;
-  background:#d4a43a;color:#1a3330;
-  padding:8px 18px;border-radius:3px;
-  font-size:11px;letter-spacing:2px;text-transform:uppercase;
-  font-weight:500;font-family:'Jost',sans-serif;
-  border:none;cursor:pointer;text-decoration:none;
-  transition:background 0.2s;margin-top:4px;
+
+</style>
+<style>
+/* Consistent Book This button - gold bar at card bottom */
+.big-card-foot {
+  display:flex;flex-direction:column;gap:8px;
+  padding:16px 28px 0 28px;
+  border-top:1px solid var(--border);
 }
-.book-btn:hover { background:#f0c96a; }
+.foot-row {
+  display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:16px;
+}
+.book-bar {
+  display:block;width:100%;
+  background:#d4a43a;color:#1a3330;
+  padding:13px 20px;
+  border:none;cursor:pointer;
+  font-family:'Jost',sans-serif;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  font-weight:600;text-align:center;
+  transition:background 0.2s;
+  border-radius:0 0 4px 4px;
+  margin-left:-28px;margin-right:-28px;
+  width:calc(100% + 56px);
+}
+.book-bar:hover { background:#f0c96a; }
 </style>
 </head>
 <body>
@@ -768,7 +785,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <span class="pill">⚠ N Tower ticket extra</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Departs</strong>Chungmuro Station, Exit 2<br/>9:00 AM start<button class="book-btn" onclick="event.stopPropagation();bookTour('Chill Tour (100€)')">📅 Book This Tour</button>
+          <div class="foot-meta"><strong>Departs</strong>Chungmuro Station, Exit 2<br/>9:00 AM start
         </div>
           <div class="big-price">100€ <span>/ person</span></div>
         </div>
@@ -858,7 +875,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <span class="pill">Ramen or chicken dinner</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Cruise runs</strong>4 PM – 10 PM window<button class="book-btn" onclick="event.stopPropagation();bookTour('Han River Cruise (60€)')">📅 Book This Tour</button>
+          <div class="foot-meta"><strong>Cruise runs</strong>4 PM – 10 PM window
         </div>
           <div class="big-price">60€ <span>/ person</span></div>
         </div>
@@ -890,7 +907,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <span class="pill">🚉 Seoul Station pickup</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Departs</strong>Seoul Station (Story Way)<br/>8:45 AM → returns ~4:30 PM<button class="book-btn" onclick="event.stopPropagation();bookTour('Suwon Day Trip (60€)')">📅 Book This Tour</button>
+          <div class="foot-meta"><strong>Departs</strong>Seoul Station (Story Way)<br/>8:45 AM → returns ~4:30 PM
         </div>
           <div class="big-price">60€ <span>/ person</span></div>
         </div>
@@ -911,7 +928,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <span class="pill">🎢 Park entry not included</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Location</strong>Yongin · Full day<button class="book-btn" onclick="event.stopPropagation();bookTour('Everland (Ask for price)')">📅 Book This Tour</button>
+          <div class="foot-meta"><strong>Location</strong>Yongin · Full day
         </div>
           <div class="big-price" style="font-size:18px;color:#5a8a7a">Ask for price</div>
         </div>
@@ -932,11 +949,18 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <span class="pill">⏱ ~4 hours</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Duration</strong>Approx. 4 hours<button class="book-btn" onclick="event.stopPropagation();bookTour('Incheon Day Trip (Ask for price)')">📅 Book This Tour</button>
+          <div class="foot-meta"><strong>Duration</strong>Approx. 4 hours
         </div>
           <div class="big-price" style="font-size:18px;color:#5a8a7a">Ask for price</div>
         </div>
-      </div>
+      
+      <button class="book-bar" onclick="bookTour('Chill Tour (100€)')">Book This &rarr;</button>
+      <button class="book-bar" onclick="bookTour('Cultural Tour (65€)')">Book This &rarr;</button>
+      <button class="book-bar" onclick="bookTour('Young Fashion Street (50€)')">Book This &rarr;</button>
+      <button class="book-bar" onclick="bookTour('Han River Cruise (60€)')">Book This &rarr;</button>
+      <button class="book-bar" onclick="bookTour('Hip &amp; Fancy Street (60€)')">Book This &rarr;</button>
+      <button class="book-bar" onclick="bookTour('Suwon Day Trip (60€)')">Book This &rarr;</button>
+      <button class="book-bar" onclick="bookTour('Everland (Ask for price)')">Book This &rarr;</button></div>
     </div>
     <div class="note"><strong>Seasonal note:</strong> Yangpyeong river glamping runs late June through August only — contact us early to secure your spot.</div>
   </div>
@@ -959,7 +983,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           </ul>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Location</strong>Sindang Station · Evening<button class="book-btn" onclick="event.stopPropagation();bookTour('Korean BBQ Experience (40€/90€)')">📅 Book This Tour</button>
+          <div class="foot-meta"><strong>Location</strong>Sindang Station · Evening
         </div>
           <div><div class="big-price" style="font-size:20px">40€ <span>pork</span></div><div class="big-price" style="font-size:20px">90€ <span>beef</span></div></div>
         </div>
@@ -979,7 +1003,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           </ul>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Location</strong>Myeongdong, Exit 6<button class="book-btn" onclick="event.stopPropagation();bookTour('Myeongdong Street Food (25€)')">📅 Book This Tour</button>
+          <div class="foot-meta"><strong>Location</strong>Myeongdong, Exit 6
         </div>
           <div class="big-price">25€ <span>/ person</span></div>
         </div>
@@ -998,7 +1022,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           </ul>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Location</strong>Mangwon Station, Exit 6<button class="book-btn" onclick="event.stopPropagation();bookTour('Mangwon Market Food Tour (35€)')">📅 Book This Tour</button>
+          <div class="foot-meta"><strong>Location</strong>Mangwon Station, Exit 6
         </div>
           <div class="big-price">35€ <span>/ person</span></div>
         </div>
@@ -1018,12 +1042,15 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           </ul>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Style</strong>Relaxed · ~3 hours<button class="book-btn" onclick="event.stopPropagation();bookTour('Seoul Café Hopping (20€)')">📅 Book This Tour</button>
+          <div class="foot-meta"><strong>Style</strong>Relaxed · ~3 hours
         </div>
           <div class="big-price">20€ <span>/ person</span></div>
         </div>
         <button class="book-btn" onclick="event.stopPropagation();">Book This →</button>
-      </div>
+      
+      <button class="book-bar" onclick="bookTour('Korean BBQ Experience (40€/90€)')">Book This &rarr;</button>
+      <button class="book-bar" onclick="bookTour('Myeongdong Street Food (25€)')">Book This &rarr;</button>
+      <button class="book-bar" onclick="bookTour('Mangwon Market Food Tour (35€)')">Book This &rarr;</button></div>
     </div>
     <div class="note"><strong>Combine &amp; save:</strong> Book any experience alongside a full-day tour. Contact us to build your perfect itinerary.</div>
   </div>
@@ -1058,8 +1085,8 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <div style="background:#f0c96a;color:#1a3330;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">2</div>
             <div style="font-size:13px;color:#c8f0e8;line-height:1.6;">
-              Pay <strong style="color:#f0c96a;">50€ via Wise</strong> to <strong style="color:#ffffff;">whisperkorea@naver.com</strong><br/>
-              <span style="font-size:12px;color:#9addd0;">📸 Send a screenshot of your Wise payment via WhatsApp: <strong style="color:#f0c96a;">+82 10-2442-4947</strong></span>
+              We will send you the <strong style="color:#f0c96a;">payment details (50€ via Wise)</strong> via Email or WhatsApp<br/>
+              <span style="font-size:12px;color:#9addd0;">📸 Once paid, send us your payment screenshot to confirm</span>
             </div>
           </div>
           <div style="display:flex;gap:12px;align-items:flex-start;">
@@ -1073,10 +1100,11 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         </div>
 
         <div style="background:rgba(212,164,58,0.15);border:1px solid rgba(212,164,58,0.4);border-radius:4px;padding:12px 16px;">
-          <div style="font-size:13px;color:#f0c96a;font-weight:500;margin-bottom:4px;">💳 Wise Payment Details</div>
-          <div style="font-size:13px;color:#ffffff;">Amount: <strong>50€</strong></div>
-          <div style="font-size:13px;color:#ffffff;">Send to: <strong>whisperkorea@naver.com</strong></div>
-          <div style="font-size:12px;color:#9addd0;margin-top:4px;">After payment, WhatsApp your screenshot to <strong style="color:#f0c96a;">+82 10-2442-4947</strong></div>
+          <div style="font-size:13px;color:#f0c96a;font-weight:500;margin-bottom:6px;">💳 Payment</div>
+          <div style="font-size:13px;color:#c8f0e8;line-height:1.7;">
+            After you submit the form, we will reach out via <strong style="color:#ffffff;">Email or WhatsApp</strong> with the Wise payment details.<br/>
+            Once you send the payment screenshot, we start building your itinerary!
+          </div>
         </div>
 
         <div style="margin-top:14px;font-size:12px;color:#9addd0;line-height:1.7;">
@@ -1202,8 +1230,8 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         </div>
 
         <div style="font-size:12px;color:#9addd0;text-align:center;margin-bottom:10px;line-height:1.6;">
-          By submitting you agree to pay <strong style="color:#f0c96a;">50€ via Wise</strong> to whisperkorea@naver.com<br/>
-          and send your payment screenshot via WhatsApp <strong style="color:#f0c96a;">+82 10-2442-4947</strong>
+          After submitting, we will contact you with payment details.<br/>
+          Your itinerary starts once payment is confirmed. <strong style="color:#f0c96a;">Refinements included ✅</strong>
         </div>
         <button type="submit" class="form-submit">Submit Request →</button>
       </form>
@@ -1495,18 +1523,50 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
 
 
 <script>
+var EXPERIENCE_TOURS = [
+  'Korean BBQ Experience (40€/90€)',
+  'Myeongdong Street Food (25€)',
+  'Mangwon Market Food Tour (35€)',
+  'Seoul Café Hopping (20€)'
+];
+
 function bookTour(tourName) {
   showPage('contact');
   setTimeout(function() {
+    // Set tour dropdown
     var sel = document.getElementById('tourSelect');
     if (sel) {
       for (var i = 0; i < sel.options.length; i++) {
-        if (sel.options[i].value === tourName) {
+        if (sel.options[i].value === tourName || 
+            sel.options[i].value.indexOf(tourName.split('(')[0].trim()) > -1) {
           sel.selectedIndex = i;
           break;
         }
       }
     }
+    // Set time slot based on tour type
+    var timeSlot = document.getElementById('timeSlot');
+    if (timeSlot) {
+      var isExperience = EXPERIENCE_TOURS.indexOf(tourName) > -1;
+      if (isExperience) {
+        // Experiences: default to Afternoon, show all options
+        for (var i = 0; i < timeSlot.options.length; i++) {
+          if (timeSlot.options[i].value.indexOf('Afternoon') > -1) {
+            timeSlot.selectedIndex = i;
+            break;
+          }
+        }
+      } else {
+        // Full day tours: default to Full Day
+        for (var i = 0; i < timeSlot.options.length; i++) {
+          if (timeSlot.options[i].value === 'Full Day') {
+            timeSlot.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    }
+    // Scroll to form
     var form = document.getElementById('contactForm');
     if (form) { form.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   }, 200);
@@ -1625,6 +1685,29 @@ function showToast(msg) {
   setTimeout(function(){t.classList.add('show');},100);
   setTimeout(function(){t.classList.remove('show');setTimeout(function(){t.remove();},400);},5000);
 }
+
+// Update time slot options when tour changes
+var tourSelectEl = document.getElementById('tourSelect');
+if (tourSelectEl) {
+  tourSelectEl.addEventListener('change', function() {
+    updateTimeSlots(this.value);
+  });
+}
+
+function updateTimeSlots(tourValue) {
+  var timeSlot = document.getElementById('timeSlot');
+  if (!timeSlot) return;
+  var isExp = EXPERIENCE_TOURS.indexOf(tourValue) > -1;
+  timeSlot.innerHTML = isExp
+    ? '<option value="">Select a time</option>' +
+      '<option value="Morning (9AM - 12PM)">Morning (9AM - 12PM)</option>' +
+      '<option value="Afternoon (12PM - 5PM)" selected>Afternoon (12PM - 5PM)</option>' +
+      '<option value="Evening (5PM - 10PM)">Evening (5PM - 10PM)</option>'
+    : '<option value="Full Day" selected>Full Day</option>' +
+      '<option value="Morning (9AM - 12PM)">Morning start (9AM)</option>' +
+      '<option value="Afternoon (12PM - 5PM)">Afternoon start (12PM)</option>';
+}
+
 </script>
 </body>
 </html>
