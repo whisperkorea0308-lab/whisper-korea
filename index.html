@@ -574,7 +574,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
 
 </style>
 <style>
-/* Consistent Book This button - gold bar at card bottom */
+
 .big-card-foot {
   display:flex;flex-direction:column;gap:8px;
   padding:16px 28px 0 28px;
@@ -584,20 +584,37 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
   display:flex;align-items:center;justify-content:space-between;
   padding-bottom:16px;
 }
-.book-bar {
-  display:block;width:100%;
-  background:#d4a43a;color:#1a3330;
-  padding:13px 20px;
-  border:none;cursor:pointer;
-  font-family:'Jost',sans-serif;
-  font-size:11px;letter-spacing:2px;text-transform:uppercase;
-  font-weight:600;text-align:center;
-  transition:background 0.2s;
-  border-radius:0 0 4px 4px;
-  margin-left:-28px;margin-right:-28px;
-  width:calc(100% + 56px);
+
+
+</style>
+<style>
+.big-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
-.book-bar:hover { background:#f0c96a; }
+.big-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(30,100,70,0.18);
+}
+.big-card:hover .big-card-top {
+  background: linear-gradient(135deg,#256b55,#30a882);
+}
+/* Click hint tooltip */
+.big-card::after {
+  content: 'Click to book';
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #d4a43a;
+  opacity: 0;
+  transition: opacity 0.2s;
+  font-family: 'Jost', sans-serif;
+}
+.big-card { position: relative; }
+.big-card:hover::after { opacity: 1; }
 </style>
 </head>
 <body>
@@ -767,7 +784,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
   <div class="tab-content on" id="tab-inside">
     <div class="big-cards">
 
-      <div class="big-card">
+      <div class="big-card" onclick="bookTour('Han River Cruise (60€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line"></div>
           <div class="tag-sm">Line 4 · 6 Hours</div>
@@ -791,7 +808,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         </div>
       </div>
 
-      <div class="big-card">
+      <div class="big-card" onclick="bookTour('Hip &amp; Fancy Street (60€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line teal"></div>
           <div class="tag-sm">Line 3 · Cultural</div>
@@ -813,7 +830,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         </div>
       </div>
 
-      <div class="big-card">
+      <div class="big-card" onclick="bookTour('Young Fashion Street (50€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line sage"></div>
           <div class="tag-sm">Line 2 · Fashion &amp; Lifestyle</div>
@@ -835,7 +852,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         </div>
       </div>
 
-      <div class="big-card">
+      <div class="big-card" onclick="bookTour('Cultural Tour (65€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line" style="background:var(--sage)"></div>
           <div class="tag-sm">Line 6 · Hip &amp; Fancy</div>
@@ -856,7 +873,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         </div>
       </div>
 
-      <div class="big-card">
+      <div class="big-card" onclick="bookTour('Han River Cruise (60€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line teal"></div>
           <div class="tag-sm">Line 5 · River Cruise</div>
@@ -879,7 +896,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         </div>
           <div class="big-price">60€ <span>/ person</span></div>
         </div>
-        <button class="book-btn" onclick="event.stopPropagation();">Book This →</button>
+        
       </div>
 
     </div>
@@ -889,7 +906,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
   <!-- DAY TRIPS -->
   <div class="tab-content" id="tab-daytrips">
     <div class="big-cards">
-      <div class="big-card">
+      <div class="big-card" onclick="bookTour('Suwon Day Trip (60€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line" style="background:var(--gold)"></div>
           <div class="tag-sm">1 Day · Suwon</div>
@@ -912,7 +929,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <div class="big-price">60€ <span>/ person</span></div>
         </div>
       </div>
-      <div class="big-card">
+      <div class="big-card" onclick="bookTour('Everland (Ask for price)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line"></div>
           <div class="tag-sm">1 Day · Yongin</div>
@@ -933,7 +950,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <div class="big-price" style="font-size:18px;color:#5a8a7a">Ask for price</div>
         </div>
       </div>
-      <div class="big-card">
+      <div class="big-card" onclick="bookTour('Incheon Day Trip (Ask for price)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line teal"></div>
           <div class="tag-sm">Half Day · Incheon</div>
@@ -954,13 +971,13 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <div class="big-price" style="font-size:18px;color:#5a8a7a">Ask for price</div>
         </div>
       
-      <button class="book-bar" onclick="bookTour('Chill Tour (100€)')">Book This &rarr;</button>
-      <button class="book-bar" onclick="bookTour('Cultural Tour (65€)')">Book This &rarr;</button>
-      <button class="book-bar" onclick="bookTour('Young Fashion Street (50€)')">Book This &rarr;</button>
-      <button class="book-bar" onclick="bookTour('Han River Cruise (60€)')">Book This &rarr;</button>
-      <button class="book-bar" onclick="bookTour('Hip &amp; Fancy Street (60€)')">Book This &rarr;</button>
-      <button class="book-bar" onclick="bookTour('Suwon Day Trip (60€)')">Book This &rarr;</button>
-      <button class="book-bar" onclick="bookTour('Everland (Ask for price)')">Book This &rarr;</button></div>
+      
+      
+      
+      
+      
+      
+      </div>
     </div>
     <div class="note"><strong>Seasonal note:</strong> Yangpyeong river glamping runs late June through August only — contact us early to secure your spot.</div>
   </div>
@@ -968,7 +985,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
   <!-- EXPERIENCES -->
   <div class="tab-content" id="tab-experiences">
     <div class="big-cards">
-      <div class="big-card">
+      <div class="big-card" onclick="bookTour('Korean BBQ Experience (40€/90€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line" style="background:#c0392b"></div>
           <div class="tag-sm">Evening · Sindang · Line 2 &amp; 6</div>
@@ -987,9 +1004,9 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         </div>
           <div><div class="big-price" style="font-size:20px">40€ <span>pork</span></div><div class="big-price" style="font-size:20px">90€ <span>beef</span></div></div>
         </div>
-        <button class="book-btn" onclick="event.stopPropagation();">Book This →</button>
+        
       </div>
-      <div class="big-card">
+      <div class="big-card" onclick="bookTour('Myeongdong Street Food (25€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line sage"></div>
           <div class="tag-sm">2–3 Hours · Street Food</div>
@@ -1008,7 +1025,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <div class="big-price">25€ <span>/ person</span></div>
         </div>
       </div>
-      <div class="big-card">
+      <div class="big-card" onclick="bookTour('Mangwon Market Food Tour (35€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line" style="background:var(--gold)"></div>
           <div class="tag-sm">2–3 Hours · Local Market</div>
@@ -1027,7 +1044,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <div class="big-price">35€ <span>/ person</span></div>
         </div>
       </div>
-      <div class="big-card">
+      <div class="big-card" onclick="bookTour('Seoul Café Hopping (20€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line teal"></div>
           <div class="tag-sm">Afternoon · Café Tour</div>
@@ -1046,11 +1063,11 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         </div>
           <div class="big-price">20€ <span>/ person</span></div>
         </div>
-        <button class="book-btn" onclick="event.stopPropagation();">Book This →</button>
+        
       
-      <button class="book-bar" onclick="bookTour('Korean BBQ Experience (40€/90€)')">Book This &rarr;</button>
-      <button class="book-bar" onclick="bookTour('Myeongdong Street Food (25€)')">Book This &rarr;</button>
-      <button class="book-bar" onclick="bookTour('Mangwon Market Food Tour (35€)')">Book This &rarr;</button></div>
+      
+      
+      </div>
     </div>
     <div class="note"><strong>Combine &amp; save:</strong> Book any experience alongside a full-day tour. Contact us to build your perfect itinerary.</div>
   </div>
