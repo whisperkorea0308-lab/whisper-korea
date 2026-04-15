@@ -489,21 +489,21 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
 <style>
 .form-success{
   display:none;
-  background:rgba(255,255,255,0.15);
-  border:1px solid rgba(255,255,255,0.3);
-  border-radius:8px;padding:32px;text-align:center;margin-top:16px;
+  background:#1a5c4a;
+  border:2px solid #d4a43a;
+  border-radius:8px;padding:36px 32px;text-align:center;margin-top:16px;
 }
 .form-success.show{display:block;}
 .form-success h3{
   font-family:'Playfair Display',serif;
-  font-size:22px;color:#ffffff;font-weight:400;margin-bottom:10px;
+  font-size:24px;color:#ffffff;font-weight:400;margin-bottom:12px;
 }
-.form-success p{font-size:14px;color:#c8f0e8;line-height:1.7;}
+.form-success p{font-size:14px;color:#e0f5ee;line-height:1.8;}
 .form-success .check{
-  width:52px;height:52px;border-radius:50%;
-  background:rgba(255,255,255,0.2);
+  width:56px;height:56px;border-radius:50%;
+  background:#d4a43a;
   display:flex;align-items:center;justify-content:center;
-  margin:0 auto 16px;font-size:22px;color:#f0c96a;
+  margin:0 auto 18px;font-size:24px;color:#1a3330;font-weight:700;
 }
 .booking-form{transition:opacity 0.3s;}
 .booking-form.hide{opacity:0;pointer-events:none;height:0;overflow:hidden;}
@@ -1261,10 +1261,10 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         </div>
         <button type="submit" class="form-submit">Submit Request →</button>
       </form>
-      <div class="form-success" id="customSuccess">
-        <div class="check">✓</div>
-        <h3>Request Received! ✅</h3>
-        <p><!-- dynamically updated by JS --></p>
+      <div class="form-success" id="customSuccess" style="background:#1a5c4a;border:2px solid #d4a43a;">
+        <div class="check" style="background:#d4a43a;color:#1a3330;">✓</div>
+        <h3 style="color:#ffffff;">Request Received! ✅</h3>
+        <p style="color:#e0f5ee;"><!-- dynamically updated by JS --></p>
       </div>
     </div>
   </div>
@@ -1470,10 +1470,10 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         <button type="submit" class="cf-submit">Send Booking Request</button>
       </form>
       <!-- Success message shown after submit -->
-      <div class="form-success" id="contactSuccess">
-        <div class="check">✓</div>
-        <h3>Booking Request Received!</h3>
-        <p>Thank you for reaching out to Whisper Korea.<br/>
+      <div class="form-success" id="contactSuccess" style="background:#1a5c4a;border:2px solid #d4a43a;">
+        <div class="check" style="background:#d4a43a;color:#1a3330;">✓</div>
+        <h3 style="color:#ffffff;">Booking Request Received!</h3>
+        <p style="color:#e0f5ee;">Thank you for reaching out to Whisper Korea.<br/>
         We'll confirm your booking within <strong style="color:#f0c96a">24 hours</strong>.<br/><br/>
         Check your inbox — a confirmation email is on its way!<br/><br/>
         <span style="font-size:12px;color:#a0ddd2;">💳 Payment is made <strong style="color:#f0c96a">on-site</strong> after confirmation.<br/>
@@ -1632,24 +1632,27 @@ if (contactForm) {
   contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
     var btn = this.querySelector('button[type=submit]');
-    var formData = new FormData(this);
-    var tourSelected = formData.get('tour_selected') || 'Not specified';
-    var timeSlot = formData.get('time_slot') || 'Not specified';
-    var clientName = formData.get('name') || 'Guest';
-    var clientEmail = formData.get('email') || '';
-    var date = formData.get('preferred_date') || 'Not specified';
-    var groupSize = formData.get('group_size') || 'Not specified';
-    var phone = formData.get('phone') || 'Not provided';
-    var message = formData.get('message') || '';
-    // Set dynamic subject with tour name
-    var subjectField = this.querySelector('input[name="_subject"]');
-    if (subjectField) subjectField.value = 'Whisper Korea Booking: ' + tourSelected + ' | ' + clientName;
-    // Set rich auto-reply with tour details
-    var autoField = this.querySelector('input[name="_autoresponse"]');
-    if (autoField) autoField.value = 'Hi ' + clientName + '! Thank you for booking with Whisper Korea! Your Booking Summary: Tour: ' + tourSelected + ' | Date: ' + date + ' | Time: ' + timeSlot + ' | Group Size: ' + groupSize + '. We will confirm availability within 24 hours. Payment is made on-site after confirmation. WhatsApp us at +82 10-2442-4947. Crafted journeys, just for you - Whisper Korea Team';
+    var self = this;
+    // Read form values FIRST
+    var tourSelected = self.querySelector('[name="tour_selected"]') ? self.querySelector('[name="tour_selected"]').value : 'Not specified';
+    var timeSlot = self.querySelector('[name="time_slot"]') ? self.querySelector('[name="time_slot"]').value : 'Not specified';
+    var clientName = self.querySelector('[name="name"]') ? self.querySelector('[name="name"]').value : 'Guest';
+    var clientEmail = self.querySelector('[name="email"]') ? self.querySelector('[name="email"]').value : '';
+    var date = self.querySelector('[name="preferred_date"]') ? self.querySelector('[name="preferred_date"]').value : 'Not specified';
+    var groupSize = self.querySelector('[name="group_size"]') ? self.querySelector('[name="group_size"]').value : 'Not specified';
+    var phone = self.querySelector('[name="phone"]') ? self.querySelector('[name="phone"]').value : 'Not provided';
+    var message = self.querySelector('[name="message"]') ? self.querySelector('[name="message"]').value : '';
+    // Update hidden fields BEFORE creating FormData
+    var subjectField = self.querySelector('input[name="_subject"]');
+    if (subjectField) subjectField.value = 'Whisper Korea Booking: ' + tourSelected + ' — ' + clientName;
+    var replyField = self.querySelector('input[name="_replyto"]');
+    if (replyField) replyField.value = clientEmail;
+    var autoField = self.querySelector('input[name="_autoresponse"]');
+    if (autoField) autoField.value = 'Hi ' + clientName + '! Thank you for your booking request with Whisper Korea! Here is a summary of what you requested: Tour: ' + tourSelected + ' | Date: ' + date + ' | Time Slot: ' + timeSlot + ' | Group Size: ' + groupSize + ' | Phone: ' + phone + (message ? ' | Notes: ' + message : '') + '. We will confirm availability within 24 hours. Payment is made on-site after confirmation. For quick replies WhatsApp us at +82 10-2442-4947. Crafted journeys just for you — Whisper Korea Team';
+    // NOW create FormData with updated hidden fields
     btn.textContent = 'Sending...';
     btn.disabled = true;
-    fetch(this.action, { method:'POST', body:new FormData(this), headers:{'Accept':'application/json'} })
+    fetch(this.action, { method:'POST', body:new FormData(self), headers:{'Accept':'application/json'} })
     .then(function(res) {
       if (res.ok) {
         contactForm.classList.add('hide');
@@ -1657,9 +1660,9 @@ if (contactForm) {
         if (s) {
           s.classList.add('show');
           var p = s.querySelector('p');
-          if (p) p.innerHTML = 'Thank you <strong style="color:#f0c96a">' + clientName + '</strong>! Your booking request for <strong style="color:#f0c96a">' + tourSelected + '</strong> has been received.<br/><br/>We will confirm within <strong style="color:#f0c96a">24 hours</strong>.<br/>Check your inbox — a confirmation is on its way!';
+          if (p) { p.style.color='#e0f5ee'; p.innerHTML = 'Thank you <strong style="color:#f0c96a">' + clientName + '</strong>! Your booking request for <strong style="color:#f0c96a">' + tourSelected + '</strong> has been received.<br/><br/>We will confirm within <strong style="color:#f0c96a">24 hours</strong>.<br/>Check your inbox — a confirmation is on its way!';
         }
-        showToast('Booking confirmed! Check your email.');
+        } showToast('Booking confirmed! Check your email.');
       } else { btn.textContent='Try Again'; btn.disabled=false; }
     }).catch(function(){ btn.textContent='Try Again'; btn.disabled=false; });
   });
@@ -1671,23 +1674,28 @@ if (customForm) {
   customForm.addEventListener('submit', function(e) {
     e.preventDefault();
     var btn = this.querySelector('button[type=submit]');
-    var formData = new FormData(this);
-    var clientName = (formData.get('first_name') || '') + ' ' + (formData.get('last_name') || '');
-    clientName = clientName.trim() || 'Guest';
-    var clientEmail = formData.get('email') || '';
-    var travelDate = formData.get('travel_date') || 'Not specified';
-    var numDays = formData.get('num_days') || 'Not specified';
-    var groupSize = formData.get('group_size') || 'Not specified';
-    var wishList = formData.get('wish_list') || 'None provided';
-    // Dynamic subject
-    var subjectField = this.querySelector('input[name="_subject"]');
-    if (subjectField) subjectField.value = '🗺 Custom Itinerary: ' + clientName + ' — ' + numDays + ' days from ' + travelDate;
-    // Rich auto-reply
-    var autoField = this.querySelector('input[name="_autoresponse"]');
-    if (autoField) autoField.value = 'Hi ' + clientName + '! Thank you for requesting a Custom Itinerary with Whisper Korea! NEXT STEP: Pay 50 euros via Wise to whisperkorea@naver.com then WhatsApp your payment screenshot to +82 10-2442-4947. Your itinerary will be ready within 24 hours of payment. Refinements included! - Whisper Korea Team';
+    var self = this;
+    var firstName = self.querySelector('[name="first_name"]') ? self.querySelector('[name="first_name"]').value : '';
+    var lastName = self.querySelector('[name="last_name"]') ? self.querySelector('[name="last_name"]').value : '';
+    var clientName = (firstName + ' ' + lastName).trim() || 'Guest';
+    var clientEmail = self.querySelector('[name="email"]') ? self.querySelector('[name="email"]').value : '';
+    var travelDate = self.querySelector('[name="travel_date"]') ? self.querySelector('[name="travel_date"]').value : 'Not specified';
+    var numDays = self.querySelector('[name="num_days"]') ? self.querySelector('[name="num_days"]').value : 'Not specified';
+    var groupSize = self.querySelector('[name="group_size"]') ? self.querySelector('[name="group_size"]').value : 'Not specified';
+    var wishList = self.querySelector('[name="wish_list"]') ? self.querySelector('[name="wish_list"]').value : 'None provided';
+    var budget = self.querySelector('[name="budget"]') ? self.querySelector('[name="budget"]').value : 'Not specified';
+    var seasons = Array.from(self.querySelectorAll('[name="season"]:checked')).map(function(c){return c.value;}).join(', ') || 'Not selected';
+    var vacType = Array.from(self.querySelectorAll('[name="vacation_type"]:checked')).map(function(c){return c.value;}).join(', ') || 'Not selected';
+    var food = Array.from(self.querySelectorAll('[name="food"]:checked')).map(function(c){return c.value;}).join(', ') || 'Not selected';
+    var subjectField = self.querySelector('input[name="_subject"]');
+    if (subjectField) subjectField.value = 'Whisper Korea Custom Itinerary: ' + clientName + ' — ' + numDays + ' days from ' + travelDate;
+    var replyField = self.querySelector('input[name="_replyto"]');
+    if (replyField) replyField.value = clientEmail;
+    var autoField = self.querySelector('input[name="_autoresponse"]');
+    if (autoField) autoField.value = 'Hi ' + clientName + '! Thank you for requesting a Custom Itinerary with Whisper Korea! Here is a summary of what you shared: Travel Date: ' + travelDate + ' | Duration: ' + numDays + ' days | Group Size: ' + groupSize + ' | Budget: ' + budget + ' | Season: ' + seasons + ' | Vacation Type: ' + vacType + ' | Food Preferences: ' + food + ' | Wish List: ' + wishList + '. NEXT STEP — Pay 50 euros via Wise to whisperkorea@naver.com. After payment send your screenshot via WhatsApp +82 10-2442-4947. Your personalised itinerary will be ready within 24 hours. Unlimited refinements included! Crafted journeys just for you — Whisper Korea Team';
     btn.textContent = 'Sending...';
     btn.disabled = true;
-    fetch(this.action, { method:'POST', body:new FormData(this), headers:{'Accept':'application/json'} })
+    fetch(self.action, { method:'POST', body:new FormData(self), headers:{'Accept':'application/json'} })
     .then(function(res) {
       if (res.ok) {
         customForm.classList.add('hide');
@@ -1695,13 +1703,12 @@ if (customForm) {
         if (s) {
           s.classList.add('show');
           var p = s.querySelector('p');
-          if (p) p.innerHTML = 'Thank you <strong style="color:#f0c96a">' + clientName + '</strong>! We have received your request.<br/><br/><strong style="color:#f0c96a;">⚡ Next Step:</strong><br/>Pay <strong style="color:#f0c96a;">50€ via Wise</strong> to<br/><strong style="color:#ffffff;">whisperkorea@naver.com</strong><br/><br/>Then send your payment screenshot via WhatsApp to<br/><strong style="color:#f0c96a;">+82 10-2442-4947</strong><br/><br/><span style="font-size:12px;color:#a0ddd2;">Your itinerary will be ready within 24 hours of payment confirmation. Refinements included! ✅</span>';
+          if (p) { p.style.color='#e0f5ee'; p.innerHTML = 'Thank you <strong style="color:#f0c96a">' + clientName + '</strong>! We received your request.<br/><br/><strong style="color:#f0c96a;">Next Step:</strong> Pay <strong style="color:#f0c96a;">50€ via Wise</strong> to <strong>whisperkorea@naver.com</strong><br/>Then WhatsApp your screenshot to <strong style="color:#f0c96a;">+82 10-2442-4947</strong><br/><br/><span style="font-size:12px;color:#a0ddd2;">A confirmation with your details has been sent to your email.</span>';
         }
-        showToast('Custom itinerary request sent!');
+        showToast('Check your email for confirmation!');
       } else { btn.textContent='Try Again'; btn.disabled=false; }
     }).catch(function(){ btn.textContent='Try Again'; btn.disabled=false; });
   });
-}
 
 function showToast(msg) {
   var t = document.createElement('div');
