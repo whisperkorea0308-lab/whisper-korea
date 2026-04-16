@@ -677,12 +677,12 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
       <p>From ancient palaces to neon-lit fashion streets — choose your adventure or let us design one for you.</p>
     </div>
     <div class="tours-grid">
-      <div class="tour-card" onclick="bookTour('Cultural Tour (65€)')" style="cursor:pointer;">
+      <div class="tour-card" onclick="bookTour('Cultural Tour (70€)')" style="cursor:pointer;">
         <span class="tour-badge">Line 3 · Cultural</span>
-        <h3 style="cursor:pointer;" onclick="bookTour('Cultural Tour (65€)')">Cultural Seoul Tour</h3>
-        <p>Gyeongbokgung Palace, Bukchon Hanok Village, and Insadong — all in one day.</p>
+        <h3 style="cursor:pointer;" onclick="bookTour('Cultural Tour (70€)')">Cultural Seoul Tour</h3>
+        <p>Gyeongbokgung Palace, Bukchon, Insadong &amp; Secret Garden. Hanbok = free entry. Lunch included.</p>
         <div class="tour-footer">
-          <div class="tour-price">65€ <span>/ person</span></div>
+          <div class="tour-price">70€ <span>/ person</span></div>
           <div class="tour-arrow" onclick="showPage('tours')" style="cursor:pointer;">→</div>
         </div>
       </div>
@@ -812,21 +812,23 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         <div class="big-card-top">
           <div class="big-card-line teal"></div>
           <div class="tag-sm">Line 3 · Cultural</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Cultural Tour (65€)')">Cultural Seoul Tour</h3>
+          <h3 style="cursor:pointer;" onclick="bookTour('Cultural Tour (70€)')">Cultural Seoul Tour</h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
-            <li><span class="sn">①</span>Gyeongbokgung Palace</li>
+            <li><span class="sn">①</span>Gyeongbokgung Palace <span style="font-size:10px;color:#aaa;">(free w/ Hanbok · ticket without)</span></li>
             <li><span class="sn">②</span>Bukchon Hanok Village</li>
             <li><span class="sn">③</span>Ikseon-dong &amp; Insadong</li>
             <li><span class="sn">④</span>Secret Garden — royal palace garden</li>
             
           </ul>
-          <span class="pill">👘 Optional Hanbok rental</span>
+          <span class="pill">👘 Hanbok rental = free Gyeongbokgung entry</span>
+          <span class="pill">🎟 No Hanbok = ticket required</span>
+          <span class="pill">🍱 Lunch included</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
           <div class="foot-meta"><strong>Departs</strong>Gyeongbokgung Station, Exit 7</div>
-          <div class="big-price">65€ <span>/ person</span></div>
+          <div class="big-price">70€ <span>/ person</span></div>
         </div>
       </div>
 
@@ -851,7 +853,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         </div>
       </div>
 
-      <div class="big-card" onclick="bookTour('Cultural Tour (65€)')" style="cursor:pointer;">
+      <div class="big-card" onclick="bookTour('Cultural Tour (70€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line" style="background:var(--sage)"></div>
           <div class="tag-sm">Line 6 · Hip &amp; Fancy</div>
@@ -1394,7 +1396,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <select name="tour_selected" id="tourSelect">
             <optgroup label="── Inside Seoul Tours ──">
               <option value="Chill Tour (100€)">Chill Tour (100€)</option>
-              <option value="Cultural Tour (65€)">Cultural Tour (65€)</option>
+              <option value="Cultural Tour (70€)">Cultural Tour (70€)</option>
               <option value="Young Fashion Street (50€)">Young Fashion Street (50€)</option>
               <option value="Hip &amp; Fancy Street (60€)">Hip &amp; Fancy Street (60€)</option>
               <option value="Han River Cruise (60€)">Han River Cruise (60€)</option>
