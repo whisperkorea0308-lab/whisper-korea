@@ -677,58 +677,58 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
       <p>From ancient palaces to neon-lit fashion streets — choose your adventure or let us design one for you.</p>
     </div>
     <div class="tours-grid">
-      <div class="tour-card" onclick="bookTour('Cultural Tour (70€)')" style="cursor:pointer;">
+      <div class="tour-card" onclick="bookTour('Cultural Seoul Tour (70€)')" style="cursor:pointer;">
         <span class="tour-badge">Line 3 · Cultural</span>
-        <h3 style="cursor:pointer;" onclick="bookTour('Cultural Tour (70€)')">Cultural Seoul Tour</h3>
-        <p>Gyeongbokgung Palace, Bukchon, Insadong &amp; Secret Garden. Hanbok = free entry. Lunch included.</p>
+        <h3>Cultural Seoul Tour</h3>
+        <p>Gyeongbokgung Palace, Bukchon Hanok Village, Ikseon-dong, Insadong &amp; Secret Garden. Lunch included. Wed–Sun only.</p>
         <div class="tour-footer">
           <div class="tour-price">70€ <span>/ person</span></div>
-          <div class="tour-arrow" onclick="showPage('tours')" style="cursor:pointer;">→</div>
+          <div class="tour-arrow" onclick="showPage('tours');event.stopPropagation();" style="cursor:pointer;">→</div>
         </div>
       </div>
-      <div class="tour-card" onclick="bookTour('Chill Tour (100€)')" style="cursor:pointer;">
+      <div class="tour-card" onclick="bookTour('Chill Tour 9AM (100€)')" style="cursor:pointer;">
         <span class="tour-badge">Line 4 · Chill</span>
-        <h3 style="cursor:pointer;" onclick="bookTour('Chill Tour (100€)')">The Chill Tour</h3>
-        <p>N Seoul Tower, Myeongdong street food, Naksan Park city walls, and DDP — Seoul's greatest hits.</p>
+        <h3>The Chill Tour</h3>
+        <p>N Seoul Tower, Naksan Park city walls, Donut Jungsu coffee, Namdaemun, Myeongdong, and DDP — Seoul's greatest hits. Choose 9AM or 2PM start.</p>
         <div class="tour-footer">
           <div class="tour-price">100€ <span>/ person</span></div>
-          <div class="tour-arrow" onclick="showPage('tours')" style="cursor:pointer;">→</div>
+          <div class="tour-arrow" onclick="showPage('tours');event.stopPropagation();" style="cursor:pointer;">→</div>
         </div>
       </div>
       <div class="tour-card" onclick="bookTour('Han River Cruise (60€)')" style="cursor:pointer;">
         <span class="tour-badge">Line 5 · Cruise</span>
         <h3>Han River Cruise</h3>
-        <p>Gwanghwamun, Cheonggye Stream, Yeouido, Hyundai pop-ups, and a 40-min Han River cruise at Banpo Bridge.</p>
+        <p>Gwanghwamun, Cheonggye Stream, Yeouido, Hyundai pop-ups, and a Han River cruise or Banpo Bridge experience with a meal included.</p>
         <div class="tour-footer">
           <div class="tour-price">60€ <span>/ person</span></div>
-          <div class="tour-arrow" onclick="showPage('tours')" style="cursor:pointer;">→</div>
+          <div class="tour-arrow" onclick="showPage('tours');event.stopPropagation();" style="cursor:pointer;">→</div>
         </div>
       </div>
       <div class="tour-card" onclick="bookTour('Young Fashion Street (50€)')" style="cursor:pointer;">
         <span class="tour-badge">Line 2 · Fashion</span>
-        <h3 style="cursor:pointer;" onclick="bookTour('Young Fashion Street (50€)')">Young Fashion Street</h3>
-        <p>Common Ground, Seongsu-dong, Seoul Forest — the coolest side of Seoul.</p>
+        <h3>Young Fashion Street</h3>
+        <p>Common Ground, Seongsu-dong, Seoul Forest and cafe stop included — the coolest, most Instagrammable side of Seoul.</p>
         <div class="tour-footer">
           <div class="tour-price">50€ <span>/ person</span></div>
-          <div class="tour-arrow" onclick="showPage('tours')" style="cursor:pointer;">→</div>
+          <div class="tour-arrow" onclick="showPage('tours');event.stopPropagation();" style="cursor:pointer;">→</div>
         </div>
       </div>
       <div class="tour-card" onclick="bookTour('Hip &amp; Fancy Street (60€)')" style="cursor:pointer;">
         <span class="tour-badge">Line 6 · Hip</span>
-        <h3 style="cursor:pointer;" onclick="bookTour('Hip &amp; Fancy Street (60€)')">Hip &amp; Fancy Street</h3>
-        <p>Mangwon Market, Hapjeong, Hongdae nightlife, and Moonrae's hidden cafés — Seoul after dark.</p>
+        <h3>Hip &amp; Fancy Street</h3>
+        <p>Mangwon Market, Hapjeong, then choose: Hongdae nightlife or Mullae-dong chill dinner with live jazz at 7PM. Dinner included.</p>
         <div class="tour-footer">
           <div class="tour-price">60€ <span>/ person</span></div>
-          <div class="tour-arrow" onclick="showPage('tours')" style="cursor:pointer;">→</div>
+          <div class="tour-arrow" onclick="showPage('tours');event.stopPropagation();" style="cursor:pointer;">→</div>
         </div>
       </div>
       <div class="tour-card" onclick="bookTour('Suwon Day Trip (60€)')" style="cursor:pointer;">
         <span class="tour-badge">Day Trip · Suwon</span>
-        <h3 style="cursor:pointer;" onclick="bookTour('Suwon Day Trip (60€)')">Suwon Fortress Day</h3>
-        <p>UNESCO Hwaseong Fortress, Cafe Street, the famous Suwon beef district, and Starfield COEX — just one day outside Seoul.</p>
+        <h3>Suwon Fortress Day</h3>
+        <p>UNESCO Hwaseong Fortress, Haenggungdong Cafe Street, the famous Suwon beef galbi lunch, and Starfield Library — one perfect day outside Seoul.</p>
         <div class="tour-footer">
           <div class="tour-price">60€ <span>/ person</span></div>
-          <div class="tour-arrow" onclick="showPage('tours')" style="cursor:pointer;">→</div>
+          <div class="tour-arrow" onclick="showPage('tours');event.stopPropagation();" style="cursor:pointer;">→</div>
         </div>
       </div>
     </div>
@@ -785,34 +785,59 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
   <div class="tab-content on" id="tab-inside">
     <div class="big-cards">
 
-      <div class="big-card" onclick="bookTour('Han River Cruise (60€)')" style="cursor:pointer;">
+      <div class="big-card" onclick="bookTour('Chill Tour 9AM (100€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line"></div>
-          <div class="tag-sm">Line 4 · 6 Hours</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Chill Tour (100€)')">The Chill Tour</h3>
+          <div class="tag-sm">Line 4 · 6 Hours · 9AM Start</div>
+          <h3>The Chill Tour <span style="font-size:14px;font-family:'Jost',sans-serif;color:var(--mint);">— Morning</span></h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
-            <li><span class="sn">①</span>N Seoul Tower — panoramic views</li>
-            <li><span class="sn">②</span>Myeongdong — street food &amp; shopping</li>
-            <li><span class="sn">③</span>Naksan Park — city walls &amp; panoramic views</li>
-            <li><span class="sn">⑤</span>DDP — futuristic architecture</li>
+            <li><span class="sn">①</span>N Seoul Tower — panoramic views (no crowds)</li>
+            <li><span class="sn">②</span>Naksan Park — city walls &amp; rooftop views</li>
+            <li><span class="sn">③</span>Donut Jungsu — coffee stop</li>
+            <li><span class="sn">④</span>Namdaemun Market — shopping</li>
+            <li><span class="sn">⑤</span>Myeongdong lunch → Cheonggyecheon → DDP</li>
           </ul>
           <span class="pill">☕ Lunch + Coffee included</span>
           <span class="pill">⚠ N Tower ticket extra</span>
+          <span class="pill">🕘 9AM → 3:30PM</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Departs</strong>Chungmuro Station, Exit 2<br/>9:00 AM start
-        </div>
+          <div class="foot-meta"><strong>Departs</strong>Chungmuro Station, Exit 2<br/>Pink Bus outside · 9AM</div>
           <div class="big-price">100€ <span>/ person</span></div>
         </div>
       </div>
 
-      <div class="big-card" onclick="bookTour('Hip &amp; Fancy Street (60€)')" style="cursor:pointer;">
+      <div class="big-card" onclick="bookTour('Chill Tour 2PM (100€)')" style="cursor:pointer;">
+        <div class="big-card-top">
+          <div class="big-card-line" style="background:var(--mint)"></div>
+          <div class="tag-sm">Line 4 · 6 Hours · 2PM Start</div>
+          <h3>The Chill Tour <span style="font-size:14px;font-family:'Jost',sans-serif;color:var(--mint);">— Afternoon</span></h3>
+        </div>
+        <div class="big-card-body">
+          <ul class="stop-list">
+            <li><span class="sn">①</span>N Seoul Tower — golden hour views</li>
+            <li><span class="sn">②</span>Naksan Park — evening breeze &amp; city walls</li>
+            <li><span class="sn">③</span>Donut Jungsu — coffee stop</li>
+            <li><span class="sn">④</span>Myeongdong street food — meal included</li>
+            <li><span class="sn">⑤</span>Cheonggyecheon → DDP lit up at night</li>
+          </ul>
+          <span class="pill">🍢 Street meal + Coffee included</span>
+          <span class="pill">⚠ N Tower ticket extra</span>
+          <span class="pill">🕑 2PM → 8PM</span>
+        </div>
+        <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
+          <div class="foot-meta"><strong>Departs</strong>Chungmuro Station, Exit 2<br/>Pink Bus outside · 2PM</div>
+          <div class="big-price">100€ <span>/ person</span></div>
+        </div>
+      </div>
+
+      <div class="big-card" onclick="bookTour('Cultural Seoul Tour (70€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line teal"></div>
-          <div class="tag-sm">Line 3 · Cultural</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Cultural Tour (70€)')">Cultural Seoul Tour</h3>
+          <div class="tag-sm">Line 3 · Cultural · Wed–Sun only</div>
+          <h3>Cultural Seoul Tour</h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
@@ -824,9 +849,10 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           </ul>
           <span class="pill">👘 Hanbok not included</span>
           <span class="pill">🍱 Lunch included</span>
+          <span class="pill">⚠ Wed–Sun only</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Departs</strong>Gyeongbokgung Station, Exit 7</div>
+          <div class="foot-meta"><strong>Departs</strong>Gyeongbokgung Station, Exit 7<br/>10AM → 4PM</div>
           <div class="big-price">70€ <span>/ person</span></div>
         </div>
       </div>
@@ -835,7 +861,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         <div class="big-card-top">
           <div class="big-card-line sage"></div>
           <div class="tag-sm">Line 2 · Fashion &amp; Lifestyle</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Young Fashion Street (50€)')">Young Fashion Street</h3>
+          <h3>Young Fashion Street</h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
@@ -845,18 +871,19 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
             <li><span class="sn">④</span>Lunch &amp; cafe stop included</li>
           </ul>
           <span class="pill">🍜 Lunch included</span>
+          <span class="pill">☕ Cafe stop included</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Departs</strong>Konkuk University Station, Exit 6</div>
+          <div class="foot-meta"><strong>Departs</strong>Konkuk University Station, Exit 6<br/>11AM → 5PM</div>
           <div class="big-price">50€ <span>/ person</span></div>
         </div>
       </div>
 
-      <div class="big-card" onclick="bookTour('Cultural Tour (70€)')" style="cursor:pointer;">
+      <div class="big-card" onclick="bookTour('Hip &amp; Fancy Street (60€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line" style="background:var(--sage)"></div>
-          <div class="tag-sm">Line 6 · Hip &amp; Fancy</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Hip &amp; Fancy Street (60€)')">Hip &amp; Fancy Street</h3>
+          <div class="tag-sm">Line 6 · Hip &amp; Fancy · Evening</div>
+          <h3>Hip &amp; Fancy Street</h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
@@ -868,9 +895,10 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
             <li><span class="sn" style="color:#2d8b72;">B</span> Moonrae &nbsp;·&nbsp; hidden cafés &amp; chill dining</li>
           </ul>
           <span class="pill">🌙 Evening tour from 3 PM</span>
+          <span class="pill">🍽 Dinner included</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Departs</strong>Mangwon Station, Exit 6 · from 3 PM</div>
+          <div class="foot-meta"><strong>Departs</strong>Mangwon Station, Exit 6 · 3PM<br/>Best Thu/Fri/Sat evenings</div>
           <div class="big-price">60€ <span>/ person</span></div>
         </div>
       </div>
@@ -879,7 +907,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         <div class="big-card-top">
           <div class="big-card-line teal"></div>
           <div class="tag-sm">Line 5 · River Cruise</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Han River Cruise')">Han River Cruise Tour</h3>
+          <h3>Han River Cruise Tour</h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
@@ -895,8 +923,7 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
           <span class="pill">🍗 Meal included in both</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Cruise runs</strong>4 PM – 10 PM window
-        </div>
+          <div class="foot-meta"><strong>Departs</strong>Gwanghwamun Station, Exit 9<br/>2PM → 8PM · Option A €60 / Option B €50</div>
           <div class="big-price">60€ <span>/ person</span></div>
         </div>
         
@@ -912,77 +939,71 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
       <div class="big-card" onclick="bookTour('Suwon Day Trip (60€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line" style="background:var(--gold)"></div>
-          <div class="tag-sm">1 Day · Suwon</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Suwon Day Trip (60€)')">Suwon Hwaseong Fortress</h3>
+          <div class="tag-sm">1 Day · Suwon · UNESCO Fortress</div>
+          <h3>Suwon Hwaseong Fortress</h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
-            <li><span class="sn">①</span>Hwaseong Fortress walls — 8:00 AM start</li>
-            <li><span class="sn">②</span>Cafe Street stroll — 9:30 AM</li>
-            <li><span class="sn">③</span>Jang Hwaseomun Gate &amp; Pond</li>
-            <li><span class="sn">④</span>Lunch — local Suwon beef restaurant</li>
-            <li><span class="sn">⑤</span>Starfield Library — café &amp; shopping</li>
+            <li><span class="sn">①</span>Haenggungdong Cafe Street stroll</li>
+            <li><span class="sn">②</span>Hwaseong Fortress walls walk — UNESCO Heritage</li>
+            <li><span class="sn">③</span>Janganmun Gate &amp; Pond — photo stop</li>
+            <li><span class="sn">④</span>Lunch — Suwon beef galbi — included</li>
+            <li><span class="sn">⑤</span>Starfield Suwon — iconic library &amp; shopping</li>
           </ul>
-          <span class="pill">🥩 Suwon beef area</span>
-          <span class="pill">🚉 Seoul Station pickup</span>
+          <span class="pill">🥩 Suwon beef galbi lunch</span>
+          <span class="pill">🚐 Private van from Seoul Station</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Departs</strong>Seoul Station (Story Way)<br/>8:45 AM → returns ~4:30 PM
-        </div>
+          <div class="foot-meta"><strong>Departs</strong>Seoul Station Story Way<br/>8:45AM → returns ~4:30PM</div>
           <div class="big-price">60€ <span>/ person</span></div>
         </div>
       </div>
-      <div class="big-card" onclick="bookTour('Everland (Ask for price)')" style="cursor:pointer;">
+      <div class="big-card" onclick="bookTour('Everland Amusement Park (75€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line"></div>
-          <div class="tag-sm">1 Day · Yongin</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Everland (Ask for price)')">Everland Amusement Park</h3>
+          <div class="tag-sm">1 Day · Yongin · Full Day</div>
+          <h3>Everland Amusement Park</h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
-            <li><span class="sn">✦</span>Korea's largest theme park</li>
-            <li><span class="sn">✦</span>Rides, safari zone &amp; seasonal events</li>
-            <li><span class="sn">✦</span>Dining inside the park</li>
-            <li><span class="sn">✦</span>Return transport guided</li>
+            <li><span class="sn">✦</span>Korea's largest theme park — rides &amp; safari</li>
+            <li><span class="sn">✦</span>Park entry ticket included in price</li>
+            <li><span class="sn">✦</span>Lunch + one cafe included</li>
+            <li><span class="sn">✦</span>Seasonal events: Tulip / Halloween / Christmas</li>
+            <li><span class="sn">✦</span>Transport guided — direct bus from Gangnam</li>
           </ul>
-          <span class="pill">🎢 Park entry not included</span>
+          <span class="pill">🎢 Entry ticket included</span>
+          <span class="pill">🍱 Lunch + cafe included</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Location</strong>Yongin · Full day
-        </div>
-          <div class="big-price" style="font-size:18px;color:#5a8a7a">Ask for price</div>
+          <div class="foot-meta"><strong>Departs</strong>Gangnam Station, Exit 12<br/>9AM → returns ~9:30PM</div>
+          <div class="big-price">75€ <span>/ person</span></div>
         </div>
       </div>
-      <div class="big-card" onclick="bookTour('Ichon Day Trip (Ask for price)')" style="cursor:pointer;">
+      <div class="big-card" onclick="bookTour('Ichon Cultural Escape (45€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line teal"></div>
-          <div class="tag-sm">Half Day · Ichon</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Ichon Day Trip (Ask for price)')">Ichon Cultural Escape</h3>
+          <div class="tag-sm">Half Day · Ichon → Songdo · Tue–Sun only</div>
+          <h3>Ichon Cultural Escape</h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
-            <li><span class="sn">①</span>National Museum of Korea</li>
-            <li><span class="sn">②</span>Traditional Korean meal</li>
-            <li><span class="sn">③</span>Songdo Central Park</li>
+            <li><span class="sn">①</span>National Museum of Korea — FREE entry</li>
+            <li><span class="sn">②</span>Traditional Korean meal included</li>
+            <li><span class="sn">③</span>Private van → Songdo, Incheon (~45 min)</li>
+            <li><span class="sn">④</span>Songdo Central Park — futuristic eco-city</li>
           </ul>
           <span class="pill">🍚 Traditional meal included</span>
-          <span class="pill">⏱ ~4 hours</span>
+          <span class="pill">🚐 Private van included</span>
+          <span class="pill">⏱ 4 hours · Tue–Sun only</span>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Duration</strong>Approx. 4 hours
+          <div class="foot-meta"><strong>Departs</strong>National Museum of Korea, Ichon<br/>10AM → 2PM</div>
+          <div class="big-price">45€ <span>/ person</span></div>
         </div>
-          <div class="big-price" style="font-size:18px;color:#5a8a7a">Ask for price</div>
-        </div>
-      
-      
-      
-      
-      
-      
-      
       </div>
     </div>
-    <div class="note"><strong>Seasonal note:</strong> Yangpyeong river glamping runs late June through August only — contact us early to secure your spot.</div>
+    <div class="note"><strong>Day trip note:</strong> Suwon tours depart by private van from Seoul Station. Everland is best on weekdays (less crowded). Ichon Cultural Escape is Tue–Sun only — National Museum is closed Mondays.</div>
   </div>
 
   <!-- EXPERIENCES -->
@@ -991,8 +1012,8 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
       <div class="big-card" onclick="bookTour('Korean BBQ Experience (40€/90€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line" style="background:#c0392b"></div>
-          <div class="tag-sm">Evening · Sindang · Line 2 &amp; 6</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Korean BBQ Experience (40€/90€)')">Korean BBQ Experience</h3>
+          <div class="tag-sm">Evening · Sindang Station · Line 2 &amp; 6</div>
+          <h3>Korean BBQ Experience</h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
@@ -1012,8 +1033,8 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
       <div class="big-card" onclick="bookTour('Myeongdong Street Food (25€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line sage"></div>
-          <div class="tag-sm">2–3 Hours · Street Food</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Myeongdong Street Food (25€)')">Myeongdong Street Food</h3>
+          <div class="tag-sm">2–3 Hours · Street Food · From 5PM</div>
+          <h3>Myeongdong Street Food</h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
@@ -1031,8 +1052,8 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
       <div class="big-card" onclick="bookTour('Mangwon Market Food Tour (35€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line" style="background:var(--gold)"></div>
-          <div class="tag-sm">2–3 Hours · Local Market</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Mangwon Market Food Tour (35€)')">Mangwon Market Food Tour</h3>
+          <div class="tag-sm">2–3 Hours · Local Market · Any Day</div>
+          <h3>Mangwon Market Food Tour</h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
@@ -1050,26 +1071,21 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
       <div class="big-card" onclick="bookTour('Seoul Café Hopping (20€)')" style="cursor:pointer;">
         <div class="big-card-top">
           <div class="big-card-line teal"></div>
-          <div class="tag-sm">Afternoon · Café Tour</div>
-          <h3 style="cursor:pointer;" onclick="bookTour('Seoul Café Hopping (20€)')">Seoul Café Hopping</h3>
+          <div class="tag-sm">Afternoon · Café Tour · ~3 Hours</div>
+          <h3>Seoul Café Hopping</h3>
         </div>
         <div class="big-card-body">
           <ul class="stop-list">
             <li><span class="sn">✦</span>3 unique, carefully chosen cafés</li>
-            <li><span class="sn">✦</span>Moonrae hidden café district</li>
-            <li><span class="sn">✦</span>One drink included at each stop</li>
-            <li><span class="sn">✦</span>Perfect for slow afternoons</li>
+            <li><span class="sn">✦</span>Moonrae (Mullae-dong) hidden café district</li>
+            <li><span class="sn">✦</span>One drink included at each café stop</li>
+            <li><span class="sn">✦</span>Gallery Mullae — live music at 7PM</li>
           </ul>
         </div>
         <div class="big-card-foot" style="flex-wrap:wrap;gap:10px;">
-          <div class="foot-meta"><strong>Style</strong>Relaxed · ~3 hours
-        </div>
+          <div class="foot-meta"><strong>Location</strong>Moonrae district · Any day<br/>Relaxed pace · ~3 hours</div>
           <div class="big-price">20€ <span>/ person</span></div>
         </div>
-        
-      
-      
-      
       </div>
     </div>
     <div class="note"><strong>Combine &amp; save:</strong> Book any experience alongside a full-day tour. Contact us to build your perfect itinerary.</div>
@@ -1393,26 +1409,29 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
         <div class="cf-group">
           <label>Tour / Experience</label>
           <select name="tour_selected" id="tourSelect">
+            <option value="">— Select a tour —</option>
             <optgroup label="── Inside Seoul Tours ──">
-              <option value="Chill Tour (100€)">Chill Tour (100€)</option>
-              <option value="Cultural Tour (70€)">Cultural Tour (70€)</option>
+              <option value="Chill Tour 9AM (100€)">The Chill Tour — Morning 9AM (100€)</option>
+              <option value="Chill Tour 2PM (100€)">The Chill Tour — Afternoon 2PM (100€)</option>
+              <option value="Cultural Seoul Tour (70€)">Cultural Seoul Tour (70€) · Wed–Sun</option>
               <option value="Young Fashion Street (50€)">Young Fashion Street (50€)</option>
               <option value="Hip &amp; Fancy Street (60€)">Hip &amp; Fancy Street (60€)</option>
-              <option value="Han River Cruise (60€)">Han River Cruise (60€)</option>
+              <option value="Han River Cruise (60€)">Han River Cruise (60€) / Banpo Bridge (50€)</option>
             </optgroup>
             <optgroup label="── Day Trips ──">
-              <option value="Suwon Day Trip (60€)">Suwon Hwaseong Day Trip (60€)</option>
-              <option value="Everland (Ask for price)">Everland Amusement Park</option>
-              <option value="Incheon Day Trip (Ask for price)">Incheon Coastal Escape</option>
+              <option value="Suwon Day Trip (60€)">Suwon Hwaseong Fortress (60€)</option>
+              <option value="Everland Amusement Park (75€)">Everland Amusement Park (75€)</option>
+              <option value="Ichon Cultural Escape (45€)">Ichon Cultural Escape (45€) · Tue–Sun</option>
             </optgroup>
             <optgroup label="── Experiences ──">
-              <option value="Korean BBQ Experience (40€/90€)">Korean BBQ Experience (40€/90€)</option>
+              <option value="Korean BBQ Experience (40€/90€)">Korean BBQ Experience (40€ pork / 90€ beef)</option>
               <option value="Myeongdong Street Food (25€)">Myeongdong Street Food (25€)</option>
               <option value="Mangwon Market Food Tour (35€)">Mangwon Market Food Tour (35€)</option>
               <option value="Seoul Café Hopping (20€)">Seoul Café Hopping (20€)</option>
             </optgroup>
             <optgroup label="── Other ──">
               <option value="Custom Itinerary (50€)">Custom Itinerary (50€) — via Wise</option>
+              <option value="Not sure yet — help me choose">Not sure yet — help me choose</option>
             </optgroup>
           </select>
         </div>
@@ -1471,31 +1490,31 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
     </div>
     <div class="footer-col">
       <h5>Tours</h5>
-      <a href="javascript:void(0)">Chill Tour</a>
-      <a href="javascript:void(0)">Cultural Tour</a>
-      <a href="javascript:void(0)">Fashion Street</a>
-      <a href="javascript:void(0)">Han River Cruise</a>
-      <a href="javascript:void(0)">Day Trips</a>
+      <a href="javascript:void(0)" onclick="bookTour('Chill Tour 9AM (100€)')">Chill Tour</a>
+      <a href="javascript:void(0)" onclick="bookTour('Cultural Seoul Tour (70€)')">Cultural Tour</a>
+      <a href="javascript:void(0)" onclick="bookTour('Young Fashion Street (50€)')">Fashion Street</a>
+      <a href="javascript:void(0)" onclick="bookTour('Han River Cruise (60€)')">Han River Cruise</a>
+      <a href="javascript:void(0)" onclick="showPage('tours')">All Day Trips</a>
     </div>
     <div class="footer-col">
       <h5>Experiences</h5>
-      <a href="javascript:void(0)">Korean BBQ</a>
-      <a href="javascript:void(0)">Street Food</a>
-      <a href="javascript:void(0)">Café Hopping</a>
+      <a href="javascript:void(0)" onclick="bookTour('Korean BBQ Experience (40€/90€)')">Korean BBQ</a>
+      <a href="javascript:void(0)" onclick="bookTour('Myeongdong Street Food (25€)')">Street Food</a>
+      <a href="javascript:void(0)" onclick="bookTour('Seoul Café Hopping (20€)')">Café Hopping</a>
     </div>
     <div class="footer-col">
       <h5>Pages</h5>
-      <a href="javascript:void(0)">Home</a>
-      <a href="javascript:void(0)">Available Tours</a>
-      <a href="javascript:void(0)">Custom Trips</a>
-      <a href="javascript:void(0)">Contact</a>
+      <a href="javascript:void(0)" onclick="showPage('home')">Home</a>
+      <a href="javascript:void(0)" onclick="showPage('tours')">Available Tours</a>
+      <a href="javascript:void(0)" onclick="showPage('custom')">Custom Trips</a>
+      <a href="javascript:void(0)" onclick="showPage('contact')">Contact</a>
     </div>
   </div>
   <div class="footer-bottom">
     <p>© 2025 Whisper Korea · All rights reserved</p>
     <div class="social-links">
-      <a href="javascript:void(0)" class="social-link">f</a>
-      <a href="javascript:void(0)" class="social-link">ig</a>
+      <a href="https://instagram.com/whisper.korea" target="_blank" class="social-link" title="Instagram @whisper.korea">ig</a>
+      <a href="https://wa.me/821024424947" target="_blank" class="social-link" title="WhatsApp">wa</a>
     </div>
   </div>
 </footer>
@@ -1542,7 +1561,8 @@ var EXPERIENCE_TOURS = [
   'Korean BBQ Experience (40€/90€)',
   'Myeongdong Street Food (25€)',
   'Mangwon Market Food Tour (35€)',
-  'Seoul Café Hopping (20€)'
+  'Seoul Café Hopping (20€)',
+  'Ichon Cultural Escape (45€)'
 ];
 
 function bookTour(tourName) {
