@@ -616,7 +616,6 @@ body{font-family:'Jost',sans-serif;font-weight:300;background:#f8fffe;color:var(
 .big-card { position: relative; }
 .big-card:hover::after { opacity: 1; }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -1627,14 +1626,14 @@ function showPage(id) {
   return false;
 }
 
-// On page load, check for a hash and navigate to it
-window.addEventListener('DOMContentLoaded', function() {
+// Handle hash navigation on page load — runs immediately since script is at bottom of body
+(function() {
   var hash = window.location.hash.replace('#', '');
   var validPages = ['home', 'tours', 'custom', 'contact'];
   if (hash && validPages.indexOf(hash) > -1) {
     showPage(hash);
   }
-});
+})();
 
 // Handle browser back/forward buttons
 window.addEventListener('hashchange', function() {
