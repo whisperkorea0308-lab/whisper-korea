@@ -1565,23 +1565,43 @@ var EXPERIENCE_TOURS = [
   'Ichon Cultural Escape (45€)'
 ];
 
+var pendingTour = null;
+
 function bookTour(tourName) {
+  pendingTour = tourName;
   showPage('contact');
-  setTimeout(function() {
-    var sel = document.getElementById('tourSelect');
-    if (sel) {
-      for (var i = 0; i < sel.options.length; i++) {
-        if (sel.options[i].value === tourName ||
-            sel.options[i].value.indexOf(tourName.split('(')[0].trim()) > -1) {
-          sel.selectedIndex = i; break;
-        }
-      }
-      updateTimeSlots(sel.value);
-    }
-    var form = document.getElementById('contactForm');
-    if (form) form.scrollIntoView({ behavior:'smooth', block:'start' });
-  }, 200);
   return false;
+}
+
+function applyPendingTour() {
+  if (!pendingTour) return;
+  var sel = document.getElementById('tourSelect');
+  if (!sel) return;
+
+  // Try direct value match first (most reliable)
+  sel.value = pendingTour;
+
+  // If direct match failed, try matching on the name part before the price
+  if (!sel.value || sel.value !== pendingTour) {
+    var namePart = pendingTour.split('(')[0].trim().toLowerCase();
+    for (var i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value.toLowerCase().indexOf(namePart) > -1) {
+        sel.selectedIndex = i;
+        break;
+      }
+    }
+  }
+
+  // Fire change so time slots update
+  var evt = document.createEvent('Event');
+  evt.initEvent('change', true, true);
+  sel.dispatchEvent(evt);
+
+  // Scroll form into view
+  var form = document.getElementById('contactForm');
+  if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  pendingTour = null;
 }
 
 function showPage(id) {
@@ -1596,8 +1616,36 @@ function showPage(id) {
       a.classList.add('active');
   });
   window.scrollTo(0,0);
+  // Update URL hash without reloading the page
+  if (history.replaceState) {
+    history.replaceState(null, null, id === 'home' ? window.location.pathname : '#' + id);
+  }
+  // If navigating to contact and a tour is pending, apply it now
+  if (id === 'contact' && pendingTour) {
+    applyPendingTour();
+  }
   return false;
 }
+
+// On page load, check for a hash and navigate to it
+window.addEventListener('DOMContentLoaded', function() {
+  var hash = window.location.hash.replace('#', '');
+  var validPages = ['home', 'tours', 'custom', 'contact'];
+  if (hash && validPages.indexOf(hash) > -1) {
+    showPage(hash);
+  }
+});
+
+// Handle browser back/forward buttons
+window.addEventListener('hashchange', function() {
+  var hash = window.location.hash.replace('#', '');
+  var validPages = ['home', 'tours', 'custom', 'contact'];
+  if (hash && validPages.indexOf(hash) > -1) {
+    showPage(hash);
+  } else {
+    showPage('home');
+  }
+});
 
 function showTab(id, el) {
   document.querySelectorAll('.tab-content').forEach(function(t){ t.classList.remove('on'); });
